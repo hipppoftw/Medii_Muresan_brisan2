@@ -1,0 +1,48 @@
+﻿@page
+@model Medii_Muresan_brisan2.Pages.Screenings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Screening[0].ScreeningTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Screening[0].Movie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Screening[0].Cinema)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Screening) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreeningTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.MovieId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinema.Location)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ScreeningId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ScreeningId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ScreeningId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
